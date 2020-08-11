@@ -9,7 +9,7 @@ class APIConnection(object):
 
     """
     def __init__(self):
-        self.api_token = 'clkvgiaypoextfs37yz98ioliejawtajeis6fhug'
+        self.api_token = 'i3lqyzdxynzjast1lazw5fbejsohvuidadkvwfnq'
 
     def get_news(self, tickers=[], items=0):
         base_link = 'https://stocknewsapi.com/api/v1'
@@ -30,7 +30,7 @@ class APIConnection(object):
         datatype_complement = 'datatype=csv'
 
         ## create data range
-        n = 400
+        n = 500
         date_range = []
         date = '04012019'
         for i in range(n):
@@ -82,4 +82,4 @@ class APIConnection(object):
                 break
             df = pd.concat([df, df_aux])
 
-        df.to_csv('data.csv', index_col='date')
+        df.to_csv('data.csv', sep=';')
