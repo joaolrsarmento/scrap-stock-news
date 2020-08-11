@@ -9,7 +9,7 @@ class APIConnection(object):
 
     """
     def __init__(self):
-        self.api_token = 'iea8kbd4nqprmcxcfavhj1xe3e85l5jax8cwqm1s'
+        self.api_token = 'clkvgiaypoextfs37yz98ioliejawtajeis6fhug'
 
     def get_news(self, tickers=[], items=0):
         base_link = 'https://stocknewsapi.com/api/v1'
@@ -76,9 +76,10 @@ class APIConnection(object):
 
             ## data parsing
             keep_col = ['date', 'title', 'text', 'sentiment', 'tickers']
-            
-            df_aux = pd.read_csv(StringIO(response.text), usecols=keep_col, index_col='date')
-
+            try:
+                df_aux = pd.read_csv(StringIO(response.text), usecols=keep_col, index_col='date')
+            except:
+                break
             df = pd.concat([df, df_aux])
 
         df.to_csv('data.csv', index_col='date')
